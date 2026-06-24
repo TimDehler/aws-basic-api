@@ -1,0 +1,17 @@
+{
+  "name": "basic-api",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "build": "npm run -ws build",
+    "clean": "npm run -ws clean --if-present",
+    "build:hello": "npm run -w @basic-api/hello build",
+    "infra:init": "terraform -chdir=infra/terraform/envs/dev init",
+    "infra:plan": "terraform -chdir=infra/terraform/envs/dev plan",
+    "infra:apply": "terraform -chdir=infra/terraform/envs/dev apply",
+    "infra:destroy": "terraform -chdir=infra/terraform/envs/dev destroy",
+    "infra:output:hello": "terraform -chdir=infra/terraform/envs/dev output -raw hello_url",
+    "infra:show:hello": "powershell -NoProfile -Command \"$u = terraform -chdir=infra/terraform/envs/dev output -raw hello_url; Write-Output ('HELLO_URL=' + $u)\"",
+    "help:scripts": "node -e \"console.log('build: build all workspaces\\nclean: clean all workspaces\\nbuild:hello: build + zip hello lambda\\ninfra:init: terraform init (download providers/modules)\\ninfra:plan: terraform dry-run preview\\ninfra:apply: create/update AWS resources\\ninfra:destroy: delete AWS resources\\ninfra:output:hello: raw hello endpoint URL\\ninfra:show:hello: labeled hello endpoint URL')\""
+  }
+}
