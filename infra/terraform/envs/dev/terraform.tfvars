@@ -1,1 +1,1 @@
-aws_deployment_region = "eu-west-1"
+aws_deployment_region = "eu-central-1"

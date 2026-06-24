@@ -15,7 +15,10 @@ provider "aws" {
 
 module "api" {
   source = "../../modules/api_http"
-  http_api_name = "basic-api-dev"
+  http_api_name                        = "basic-api-dev"
+  http_api_stage_name                  = "prod"
+  http_stage_throttle_rate_limit       = 0.00003
+  http_stage_throttle_burst_limit      = 1
 }
 
 module "hello_lambda" {
@@ -24,6 +27,7 @@ module "hello_lambda" {
   lambda_artifact_zip_path  = "../../../../apps/hello/dist/function.zip"
   lambda_runtime            = "nodejs20.x"
   lambda_handler_entrypoint = "handler.handler"
+  lambda_reserved_concurrent_executions = -1
 
   lambda_environment_variables = {
     STAGE = "dev"

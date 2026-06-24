@@ -20,3 +20,8 @@ variable "lambda_environment_variables" {
   type    = map(string)
   default = {}
 }
+
+variable "lambda_reserved_concurrent_executions" {
+  type    = number
+  default = -1
+}

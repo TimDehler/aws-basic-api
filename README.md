@@ -11,6 +11,11 @@ Beginner-friendly monorepo for a TypeScript AWS Lambda behind API Gateway, provi
   - 1 HTTP API Gateway (`basic-api-dev`)
   - 1 route (`GET /hello`)
 
+## Current Protection
+
+- Strict API Gateway throttling is enabled.
+- Lambda reserved concurrency is currently unreserved (`-1`) due account limits; you can set it when your account allows lower unreserved capacity.
+
 ## Project Structure
 
 ```text

@@ -25,6 +25,7 @@ resource "aws_lambda_function" "this" {
   handler          = var.lambda_handler_entrypoint
   filename         = var.lambda_artifact_zip_path
   source_code_hash = filebase64sha256(var.lambda_artifact_zip_path)
+  reserved_concurrent_executions = var.lambda_reserved_concurrent_executions
 
   environment {
     variables = var.lambda_environment_variables
